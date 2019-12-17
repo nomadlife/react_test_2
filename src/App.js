@@ -35,12 +35,19 @@ markComplete = (id) => {
   
 }
 
+// Del todo
+delTodo = (id) => {
+  console.log(id);
+  this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]})
+  
+}
   render (){
     // console.log('App :', this.state.todos);
     
     return (
       <div className="App">
-        <Todos todos={this.state.todos} markComplete={this.markComplete}></Todos>
+        <Todos todos={this.state.todos} markComplete={this.markComplete}
+        delTodo={this.delTodo}></Todos>
       </div>
     );
   }
