@@ -4,6 +4,7 @@ import Todos from './components/Todos';
 
 import './App2.css';
 import Header from './components/layout/header';
+import AddTodos from './components/AddTodos';
 
 class App extends Component {
 state = {
@@ -48,9 +49,12 @@ delTodo = (id) => {
     
     return (
       <div className="App">
-        <Header/>
-        <Todos todos={this.state.todos} markComplete={this.markComplete}
-        delTodo={this.delTodo}></Todos>
+        <div className="container">
+          <Header/>
+          <AddTodos/>
+          <Todos todos={this.state.todos} markComplete={this.markComplete}
+          delTodo={this.delTodo}></Todos>
+        </div>
       </div>
     );
   }
