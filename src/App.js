@@ -5,7 +5,9 @@ import Todos from './components/Todos';
 import './App2.css';
 import Header from './components/layout/header';
 import AddTodos from './components/AddTodos';
+import About from './components/pages/About';
 import uuid from 'uuid';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class App extends Component {
 state = {
@@ -59,14 +61,24 @@ addTodo = (title) => {
     // console.log('App :', this.state.todos);
     
     return (
-      <div className="App">
-        <div className="container">
-          <Header/>
-          <AddTodos addTodo={this.addTodo}/>
-          <Todos todos={this.state.todos} markComplete={this.markComplete}
-          delTodo={this.delTodo}></Todos>
+      <Router>
+        <div className="App">
+          <div className="container">
+            <Header/>
+            <Route exact path="/" render={props => (
+              <React.Fragment>
+                <AddTodos addTodo={this.addTodo}/>
+                <Todos todos={this.state.todos} markComplete={this.markComplete}
+                delTodo={this.delTodo}></Todos>
+              </React.Fragment>
+            )}></Route>
+
+            <Route path="/about" component={About}
+            ></Route>
+            
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
