@@ -7,27 +7,17 @@ import Header from './components/layout/header';
 import AddTodos from './components/AddTodos';
 import About from './components/pages/About';
 import uuid from 'uuid';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import axios from 'axios';
 
 class App extends Component {
 state = {
-  todos:[
-    {
-      id:uuid.v4(),
-      title:'Take out the trash',
-      completed:false
-    },
-    {
-      id:uuid.v4(),
-      title:'Dinner with wife',
-      completed:false
-    },
-    {
-      id:uuid.v4(),
-      title:'Meeting with boss',
-      completed:false
-    }
-  ]
+  todos:[]
+}
+
+componentDidMount(){
+  axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+  .then(res => this.setState({ todos: res.data }))
 }
 
 markComplete = (id) => {
