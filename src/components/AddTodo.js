@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-export class AddTodos extends Component {
+export class AddTodo extends Component {
     state = {
         title :''
     }
@@ -26,4 +27,8 @@ export class AddTodos extends Component {
     }
 }
 
-export default AddTodos
+AddTodo.propTypes = {
+    addTodo: PropTypes.func.isRequired
+}
+
+export default AddTodo
